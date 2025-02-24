@@ -64,18 +64,35 @@ def generate_text_lstm(model, tokenizer, seed_text, next_words=50):
                 break
     return seed_text
 
-# Example Usage
-gpt2_output = generate_text_gpt2("Artificial Intelligence is")
-print("GPT-2 Generated Text:", gpt2_output)
+# Example Usage with Different Inputs
+gpt2_inputs = [
+    "The future of artificial intelligence is",
+    "Once upon a time in a distant galaxy, there was a",
+    "The impact of climate change on global weather patterns is",
+    "A mysterious old book was discovered in an abandoned library. It contained",
+    "In 2050, humans and robots coexisted in a world where"
+]
+
+for prompt in gpt2_inputs:
+    print("GPT-2 Generated Text:", generate_text_gpt2(prompt))
 
 # Example LSTM Training Data
 text_corpus = [
     "Artificial Intelligence is revolutionizing the world.",
     "Deep learning is a subset of machine learning.",
-    "Natural language processing enables AI to understand text."
+    "Natural language processing enables AI to understand text.",
+    "The future of AI depends on data and computing power.",
+    "AI applications range from healthcare to autonomous vehicles."
 ]
 
 lstm_model, lstm_tokenizer = train_lstm_model(text_corpus)
-lstm_output = generate_text_lstm(lstm_model, lstm_tokenizer, "Artificial Intelligence")
-print("LSTM Generated Text:", lstm_output)
+lstm_inputs = [
+    "Machine learning algorithms can",
+    "The history of space exploration began",
+    "In the depths of the ocean, scientists discovered",
+    "A revolutionary medical breakthrough has",
+    "The secret to happiness lies in"
+]
 
+for seed in lstm_inputs:
+    print("LSTM Generated Text:", generate_text_lstm(lstm_model, lstm_tokenizer, seed))
