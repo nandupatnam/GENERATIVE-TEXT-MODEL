@@ -8,7 +8,6 @@ from tensorflow.keras.layers import LSTM, Dense, Embedding, Dropout
 from tensorflow.keras.preprocessing.text import Tokenizer
 from tensorflow.keras.preprocessing.sequence import pad_sequences
 
-# ========== GPT-2 Model ==========
 
 def generate_text_gpt2(prompt, max_length=100):
     tokenizer = GPT2Tokenizer.from_pretrained("gpt2")
@@ -19,7 +18,6 @@ def generate_text_gpt2(prompt, max_length=100):
     
     return tokenizer.decode(output[0], skip_special_tokens=True)
 
-# ========== LSTM-Based Model ==========
 
 def train_lstm_model(text_data, max_words=5000, seq_length=20):
     tokenizer = Tokenizer(num_words=max_words)
@@ -50,7 +48,6 @@ def train_lstm_model(text_data, max_words=5000, seq_length=20):
     model.fit(X, y, epochs=50, verbose=1)
     return model, tokenizer
 
-# ========== Generating Text Using LSTM ==========
 
 def generate_text_lstm(model, tokenizer, seed_text, next_words=50):
     for _ in range(next_words):
@@ -64,7 +61,6 @@ def generate_text_lstm(model, tokenizer, seed_text, next_words=50):
                 break
     return seed_text
 
-# Example Usage with Different Inputs
 gpt2_inputs = [
     "The future of artificial intelligence is",
     "Once upon a time in a distant galaxy, there was a",
@@ -76,7 +72,6 @@ gpt2_inputs = [
 for prompt in gpt2_inputs:
     print("GPT-2 Generated Text:", generate_text_gpt2(prompt))
 
-# Example LSTM Training Data
 text_corpus = [
     "Artificial Intelligence is revolutionizing the world.",
     "Deep learning is a subset of machine learning.",
